@@ -13,7 +13,7 @@ div suivi d'un p : div + p ->  <div></div>
 Shif + ctrl et fleche de gauche  -> selectionner le txt
 ctrl + shift + L pour select tout les reccurences du txt vu dessus
 Ctrl + espace pour revoir la suggestion de vs code
-
+Ctrl + d select la meme chose
 metadonnee : donnee sur de la donnee comme la balise "<head>"
 Methode de la SPL : "require once" pour ce situer dans 
 MVC : model view controler
@@ -22,4 +22,5 @@ GPG Mailer : If user uploads public key, emails to this user will be encrypted a
 === : strictement egale
 PASSORD HACH
 PASSORD verify
-hacher seulement à l enregistrement 
+hacher seulement à l enregistrement
+barre de recherche specifique au produit si une categorie est clicker dans le dropown le search ce base uniquement sur la cat selectionneer  
