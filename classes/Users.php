@@ -5,6 +5,10 @@ Class Users extends Table {
     private $name;
     private $email;
 
+    public function __construct()
+    {
+        parent::__construct('Users');
+    }
     /**
      * Get the value of name
      */
