@@ -1,8 +1,9 @@
 <?php 
 require_once __DIR__ . '/layout/header.php'; 
-require_once __DIR__ . '/layout/toolbar.php'; 
+require_once __DIR__ . '/layout/Searchbar.php'; 
 require_once __DIR__ . '/classes/Database.php'; 
 require_once __DIR__ . '/classes/Categories.php'; 
+require_once __DIR__ . '/functions/randomImg.php'
 ?>
 
 
@@ -13,17 +14,28 @@ require_once __DIR__ . '/classes/Categories.php';
     $categories = $categoriesDb->findAll();
 ?>
 <div class="list-container">
-    <div class="list-header">
-        <div>ID :</div>
-        <div>Nom :</div>
-    </div>
     <?php foreach ($categories as $category) { ?>
-    <div class="category-item">
-        <div><?php echo $category['id']; ?></div>
-        <div><?php echo $category['name']; ?></div>
-    </div>
-    <?php } ?>
+        <!--<a href="categories.php?id=<?php echo $category['id']; ?>" class="category-link">-->
+        <a href="#" class="category-link">
+            <div class="category-card">
+                <div class="category-image">
+                    <?php if(isset($category['image_url'])) { ?>
+                        <img src="https://cdn.pixabay.com/photo/2018/02/21/05/17/cat-3169476_1280.jpg" alt="<?php echo $category['name']; ?>">
+                    <?php } else { ?>
+                        <img src="placeholder_image.jpg" alt="<?php echo $category['name']; ?>">
+                        
+                    <?php } ?>
+                </div>
+                <div class="category-details">
+                    <div>ID : <?php echo $category['id']; ?></div>
+                    <div>Nom : <?php echo $category['name']; ?></div>
+                </div>
+            </div>
+        </a>
+    <?php } ?><?php var_dump(getRandomImgUrl()); ?>
 </div>
+
+
 
 
 

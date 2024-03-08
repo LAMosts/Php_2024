@@ -20,3 +20,6 @@ MVC : model view controler
 PayLoad : form data
 GPG Mailer : If user uploads public key, emails to this user will be encrypted and signed.
 === : strictement egale
+PASSORD HACH
+PASSORD verify
+hacher seulement à l enregistrement 
