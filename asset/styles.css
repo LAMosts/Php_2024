@@ -1,8 +1,8 @@
-/* Style des conteneurs des cartes */
-.list-container {
+
+.list-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Espacement entre les cartes */
+  align-items: center; 
+  column-gap: 1.5em;
 
   & > * {
     min-width: 90px;
@@ -18,41 +18,3 @@
   }
 }
 
-/* Style des cartes */
-.category-card {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 250px;
-  
-}
-.category-link {
-  text-decoration: none; /* Supprimer le soulignement par défaut */
-  color: inherit; /* Utiliser la couleur par défaut du texte */
-  display: block; /* Rendre le lien en bloc pour occuper toute la carte */
-  cursor: pointer; /* Indiquer que le lien est cliquable */
-  transition: box-shadow 0.3s ease; /* Transition douce pour l'ombre */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0); /* Ombre transparente par défaut */
-  border-radius: 20px;
-}
-
-.category-link:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Ajouter une ombre gris au survol */
-}
-/* Style de l'image de la catégorie */
-.category-image img {
-  width: 100%;
-  height: auto;
-}
-
-/* Style des détails de la catégorie */
-.category-details {
-  padding: 15px;
-}
-
-/* Style des détails spécifiques */
-.category-details div {
-  margin-bottom: 10px;
-  font-size: 16px;
-}

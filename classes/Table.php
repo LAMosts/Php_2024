@@ -15,7 +15,7 @@ abstract class Table
 
     public function findAll(): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM " . $this->name);
+        $stmt =  $this->pdo->query("SELECT * FROM " . $this->name);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -31,5 +31,12 @@ abstract class Table
         }
 
         return $result;
+    }
+    public function search(string $catname): ?array 
+    {
+        $stmt = $this->pdo->prepare('SELECT ' . $catname . ' FROM ' . $this->name . " WHERE name = :catname");
+        $stmt->execute(['name' => $catname]);
+        $categories = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $categories;
     }
 }
