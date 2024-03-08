@@ -1,0 +1,22 @@
+ nav>ul>(li>a:link)*4 ->
+        <nav>
+            <ul>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+
+div suivi d'un p : div + p ->  <div></div>
+        <p></p>
+Shif + ctrl et fleche de gauche  -> selectionner le txt
+ctrl + shift + L pour select tout les reccurences du txt vu dessus
+Ctrl + espace pour revoir la suggestion de vs code
+
+metadonnee : donnee sur de la donnee comme la balise "<head>"
+Methode de la SPL : "require once" pour ce situer dans 
+MVC : model view controler
+PayLoad : form data
+GPG Mailer : If user uploads public key, emails to this user will be encrypted and signed.
+=== : strictement egale
