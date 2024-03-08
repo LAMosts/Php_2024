@@ -12,3 +12,4 @@ CHARSET =dbCHARSET
 USER =dbuser
 PASSWORD =dbpsswrd
 ````
+chat pour le trie des cats
