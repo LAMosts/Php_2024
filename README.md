@@ -5,10 +5,10 @@
 Créer un fichier `db.ini` dans le dossier `Config`, données de configuration : 
 
 ````ini
-HOST =localhost
-PORT =3306
-DB_NAME =php_store
-CHARSET =utf8mb4
-USER =root
-PASSWORD =
+HOST =dbhost
+PORT =dbPort
+DB_NAME =dbname
+CHARSET =dbCHARSET
+USER =dbuser
+PASSWORD =dbpsswrd
 ````
