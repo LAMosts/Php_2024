@@ -58,7 +58,7 @@
         </div>
 
         <nav>
-            <?php require_once __DIR__ ."/dropdown.php";
+            <?php require_once __DIR__ ."/dropdown.php";?></br><?php
             require_once __DIR__ . '/navbar.php'; ?> 
         </nav>
     </header>

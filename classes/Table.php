@@ -7,7 +7,7 @@ abstract class Table
     protected PDO $pdo;
     
     public function __construct(
-        protected string $name
+        protected ?string $name
     )
     {
         $this->pdo = Database::getConnection();
