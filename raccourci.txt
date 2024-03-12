@@ -24,3 +24,4 @@ PASSORD HACH
 PASSORD verify
 hacher seulement à l enregistrement
 barre de recherche specifique au produit si une categorie est clicker dans le dropown le search ce base uniquement sur la cat selectionneer  
+à faire : git clone https://github.com/ld-web/cnam-php-2024-src.git
