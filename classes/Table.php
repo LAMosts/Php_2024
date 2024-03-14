@@ -32,11 +32,19 @@ abstract class Table
 
         return $result;
     }
-    public function search(string $catname): ?array 
+    public function searchAll(string $productName): ?array 
     {
-        $stmt = $this->pdo->prepare('SELECT ' . $catname . ' FROM ' . $this->name . " WHERE name = :catname");
-        $stmt->execute(['name' => $catname]);
+        $stmt = $this->pdo->prepare('SELECT ' . $productName . ' FROM ' . $this->name . " WHERE name = :productName");
+        $stmt->execute(['name' => $productName]);
         $categories = $stmt->fetch(PDO::FETCH_ASSOC);
         return $categories;
     }
+    public function filteredSearch(string $filters): ?array {
+        $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :filters');
+        $stmt->execute(['filters' => $filters]);
+        $productsFiltred = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $productsFiltred;
+    }
+    
+    
 }
