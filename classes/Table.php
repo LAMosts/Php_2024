@@ -32,13 +32,21 @@ abstract class Table
 
         return $result;
     }
-    public function searchAll(string $productName): ?array 
+    public function searchAll(?string $productName): ?array 
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name . " WHERE name = :productName");
-        $stmt->execute(['productName' => $productName]);
-        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $categories;
+        if ($productName === null) {
+            $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name);
+            $stmt->execute();
+        } else {
+            $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name . " WHERE name = :productName");
+            $stmt->execute(['productName' => $productName]);
+        }
+        
+        // Récupérer les produits
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
     }
+    
     
     public function filteredSearch(string $productName, int $categoryId): ?array {
         $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :category_id AND name LIKE :product_name');
@@ -46,7 +54,5 @@ abstract class Table
         $productsFiltered = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $productsFiltered;
     }
-    
-    
-    
+    //amelioration de la securiter des methode grace a chatgpt pour avoid les injection sql 
 }

@@ -1,62 +1,135 @@
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  margin: 20px auto;
-}
-
-.carousel-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.category-card {
-  flex: 0 0 auto;
-  width: 250px;
-  margin: 0 10px;
-  text-align: center;
-}
-
-.category-image img {
-  width: 100%;
-  height: auto;
-}
-
-.category-details {
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
   padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.id-name-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.product-image {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.category-id, .category-name {
+.product-details {
+  text-align: left;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1;
+.product-price {
+  font-size: 16px;
+  color: green;
+  margin-bottom: 5px;
 }
 
-.prev {
-  left: 0;
+.product-description {
+  font-size: 14px;
+}
+.logo{
+  color: #fff;
+}
+/**********************************************/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
 }
 
-.next {
-  right: 0;
+.containers {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
-#dropdownBgHover{
-  overflow-y:auto;
-  max-height:200px;
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.category {
+  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1 1 300px; /* Chaque produit occupe au maximum 300px de largeur */
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price {
+  font-weight: bold;
+  color: #008080;
+}
+
+.product p {
+  color: #666;
+}
+/******************************************/
+.btn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #008080;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-primary:hover {
+    background-color:#008080;
+}
+
+/* Ajouter ce style pour centrer le bouton d'accueil */
+@media (max-width: 768px) {
+  .btn {
+      width: 90%; /* Prend toute la largeur */
+      margin-top: 10px; /* Espacement du haut */
+  }
 }
