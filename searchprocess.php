@@ -17,6 +17,7 @@ foreach ($categories as $category) {
             displayProducts($results, $category);
         }
     } elseif ($searchTerm !== '' && $searchCatnam === '') {
+        $searchCatnam = 0;
         $results = $searchProduct->filteredSearch($searchTerm,$searchCatnam);
         displayProducts($results, $category);
     } elseif ($searchTerm !== '' && $searchCatnam !== '') {

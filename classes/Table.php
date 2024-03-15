@@ -41,7 +41,7 @@ abstract class Table
     }
     
     
-    public function filteredSearch(string $productName, ?int $categoryId): ?array {
+    public function filteredSearch(string $productName, int $categoryId): ?array {
         $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :category_id AND name LIKE :product_name');
         $stmt->execute(['category_id' => $categoryId, 'product_name' => '%' . $productName . '%']); // recherche de produit partiellement ressemblant Made by chatGpt gg
         $productsFiltered = $stmt->fetchAll(PDO::FETCH_ASSOC);
