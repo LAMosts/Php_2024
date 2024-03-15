@@ -34,17 +34,19 @@ abstract class Table
     }
     public function searchAll(string $productName): ?array 
     {
-        $stmt = $this->pdo->prepare('SELECT ' . $productName . ' FROM ' . $this->name . " WHERE name = :productName");
-        $stmt->execute(['name' => $productName]);
-        $categories = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name . " WHERE name = :productName");
+        $stmt->execute(['productName' => $productName]);
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $categories;
     }
-    public function filteredSearch(string $filters): ?array {
-        $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :filters');
-        $stmt->execute(['filters' => $filters]);
-        $productsFiltred = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $productsFiltred;
+    
+    public function filteredSearch(string $productName, int $categoryId): ?array {
+        $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :category_id AND name LIKE :product_name');
+        $stmt->execute(['category_id' => $categoryId, 'product_name' => '%' . $productName . '%']); // recherche de produit partiellement ressemblant Made by chatGpt gg
+        $productsFiltered = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $productsFiltered;
     }
+    
     
     
 }
