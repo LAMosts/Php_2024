@@ -1,21 +1,24 @@
-<?php 
-require_once __DIR__ . '/layout/header.php'; 
-require_once __DIR__ . '/classes/SearchProduct.php'; 
-require_once __DIR__ . '/classes/Categories.php'; 
+<?php
+require_once __DIR__ . '/layout/header.php'; // Inclusion de l'en-tête
+require_once __DIR__ . '/classes/SearchProduct.php'; // Inclusion de la classe SearchProduct
+require_once __DIR__ . '/classes/Categories.php'; // Inclusion de la classe Categories
+
+$searchProduct = new SearchProduct(); // Création d'une instance de la classe SearchProduct
+$categoriesDb = new Categories(); // Création d'une instance de la classe Categories
+$categories = $categoriesDb->findAll(); // Récupération de toutes les catégories
+
 ?>
 <div class="containers">
     <h1>Notre Magasin</h1>
     <?php 
-    $searchProduct = new SearchProduct(); // Correction du nom de classe
-    $categoriesDb = new Categories();
-    $categories = $categoriesDb->findAll();
+    //$categoryId = !empty($searchCatnam) ? (int)$searchCatnam : null; // Conversion de la catégorie en entier
     foreach ($categories as $category): ?>
         <div class="category">
             <h2><?= $category['name'] ?></h2>
             <div class="products">
                 <?php
                 // Recherche des produits pour cette catégorie
-                $products = $searchProduct->filteredSearch('',$category['id']); // Utilisation de la méthode correcte
+                $products = $searchProduct->filteredSearch('', $category['id']); // Utilisation de la variable $categoryId
                 if ($products) { // Vérification si des produits existent
                     foreach ($products as $product): ?>
                         <div class="product">
@@ -33,4 +36,4 @@ require_once __DIR__ . '/classes/Categories.php';
         </div>
     <?php endforeach; ?>
 </div>
-<?php require_once __DIR__ . '/layout/footer.php'; ?> 
+<?php require_once __DIR__ . '/layout/footer.php'; // Inclusion du pied de page

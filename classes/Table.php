@@ -13,10 +13,11 @@ abstract class Table
         $this->pdo = Database::getConnection();
     }
 
-    public function findAll(): array
+    public function findAll(): ?array
     {
         $stmt =  $this->pdo->query("SELECT * FROM " . $this->name);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $findall = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $findall;
     }
 
     public function find(int $id): ?array
@@ -29,7 +30,6 @@ abstract class Table
         if ($result === false) {
             return null;
         }
-
         return $result;
     }
     public function searchAll(?string $productName): ?array 
@@ -54,5 +54,17 @@ abstract class Table
         $productsFiltered = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $productsFiltered;
     }
-    //amelioration de la securiter des methode grace a chatgpt pour avoid les injection sql 
+    public function getCategoryName(int $categoryId): ?array
+    {
+    $stmt = $this->pdo->prepare('SELECT name FROM ' . $this->name . ' WHERE id = :id');
+    $stmt->execute(['id' => $categoryId]);
+
+    $category = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($category === false) {
+        return null;
+    }
+
+    return $category;
+    }
 }
