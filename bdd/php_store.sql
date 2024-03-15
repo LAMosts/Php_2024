@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 15 mars 2024 à 23:13
+-- Généré le : jeu. 14 mars 2024 à 13:13
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `Password`) VALUES
-(1, 'EnkloK', '$2y$10$kEdVSSJ4W61OfhK8rbdVy.5m.YnRA7CXpERD2wFzuLKU2/BEkV1ku');
+(1, 'Admin', '$2y$10$kEdVSSJ4W61OfhK8rbdVy.5m.YnRA7CXpERD2wFzuLKU2/BEkV1ku');
 
 --
 -- Contraintes pour les tables déchargées

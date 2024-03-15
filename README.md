@@ -30,6 +30,7 @@ Le principal problème identifié est que la recherche de produits sans avoir sp
 2. Configurez l'environnement de développement (PHP, base de données, etc.).
 3. Importez la base de données fournie php_store/bdd/php_store.php et configurez les informations de connexion dans le fichier `db.ini`.
 4. Lancez le serveur et accédez au site dans votre navigateur. il se peut que les img ne s'affiche pas dans ce cas tourner vous sur le navigateur `duckduckgo`
+5. Le mot de passe pour tester la connexion est "test"
 
 ## Base de données - Configuration 
 `db.ini` dans le dossier `Config`, données de configuration : 
