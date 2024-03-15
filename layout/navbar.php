@@ -4,13 +4,13 @@ require_once __DIR__ . '/../classes/Categories.php';
 $categoriesDb = new Categories();
 $categories = $categoriesDb->findAll();
 
-// Fonction pour trier les catégories par ordre alphabétique
 function sortByCategoryName($a, $b) {
     return strcmp($a['name'], $b['name']);
 }
 
 usort($categories, 'sortByCategoryName');
 ?>
+
 <nav class="bg-gray border-gray-200 dark:bg-gray-900">
     <form action="searchprocess.php" method="GET">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -36,15 +36,15 @@ usort($categories, 'sortByCategoryName');
                     </div>
                     <input type="text" id="search-navbar" name="search" 
                         class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                        placeholder="Search...">
+                        placeholder="Search..." value="<?php echo $_GET['search'] ?? ''; ?>">
 
                 </div>
             </div>
             <div class="relative">
                 <select name="category" class="block w-auto p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="">Toutes les catégories</option>
+                    <option value="" <?php if (!isset($_GET['category']) || $_GET['category'] === '') echo 'selected'; ?>>Toutes les catégories</option>
                     <?php foreach ($categories as $category) { ?>
-                    <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                        <option value="<?php echo $category['id']; ?>" <?php if (isset($_GET['category']) && $_GET['category'] == $category['id']) echo 'selected'; ?>><?php echo $category['name']; ?></option>
                     <?php } ?>
                 </select>
             </div>

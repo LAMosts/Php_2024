@@ -5,7 +5,7 @@ require_once __DIR__ . "/Database.php";
 abstract class Table
 {
     protected PDO $pdo;
-    
+    private $password;
     public function __construct(
         protected ?string $name
     )
@@ -32,23 +32,16 @@ abstract class Table
         }
         return $result;
     }
-    public function searchAll(?string $productName): ?array 
+    public function searchAll(): ?array 
     {
-        if ($productName === null) {
-            $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name);
-            $stmt->execute();
-        } else {
-            $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name . " WHERE name = :productName");
-            $stmt->execute(['productName' => $productName]);
-        }
-        
-        // Récupérer les produits
+        $stmt = $this->pdo->prepare('SELECT * FROM ' . $this->name);
+        $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $products;
     }
     
     
-    public function filteredSearch(string $productName, int $categoryId): ?array {
+    public function filteredSearch(string $productName, ?int $categoryId): ?array {
         $stmt = $this->pdo->prepare('SELECT * FROM product WHERE category_id = :category_id AND name LIKE :product_name');
         $stmt->execute(['category_id' => $categoryId, 'product_name' => '%' . $productName . '%']); // recherche de produit partiellement ressemblant Made by chatGpt gg
         $productsFiltered = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,4 +60,41 @@ abstract class Table
 
     return $category;
     }
+
+    public function insertUser($username, $password): ?array {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->pdo->prepare("INSERT INTO users (login, password) VALUES (:username, :password)");
+        $stmt->execute(['username' => $username, 'password' => $hashedPassword]);
+        if ($stmt->rowCount() > 0) {
+            return ['login' => $username];
+        } else {
+            return null;
+        }
+    }
+    
+    
+    public function verifyUser($username): ?array {
+        $stmt = $this->pdo->prepare("SELECT id, password FROM users WHERE User = :username");
+        $stmt->execute(['login' => $username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+    public function countUser(): int {
+        return $this->pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
+    }
+    
+
+    public function getPassword()
+    {
+        $stmt = $this->pdo->prepare("SELECT Password FROM users");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($result) {
+            return $result['Password'];
+        } else {
+            return null;
+        }
+    }
+    
 }

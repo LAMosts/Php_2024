@@ -1,7 +1,7 @@
-?<?php
+<?php
 require_once __DIR__ . "/Table.php";
 
-Class Users extends Table { 
+Class Users extends Table {
 
     public function __construct()
     {

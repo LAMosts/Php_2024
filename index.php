@@ -17,9 +17,8 @@ $categories = $categoriesDb->findAll(); // Récupération de toutes les catégor
             <h2><?= $category['name'] ?></h2>
             <div class="products">
                 <?php
-                // Recherche des produits pour cette catégorie
-                $products = $searchProduct->filteredSearch('', $category['id']); // Utilisation de la variable $categoryId
-                if ($products) { // Vérification si des produits existent
+                $products = $searchProduct->filteredSearch('', $category['id']);
+                if ($products) { 
                     foreach ($products as $product): ?>
                         <div class="product">
                             <img src="<?= $product['cover'] ?>" alt="<?= $product['name'] ?>">
